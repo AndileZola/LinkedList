@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LinkedList
 {
-    class LinkedList
+    public class LinkedList
     {
         public Node head, tail;
         public LinkedList()
@@ -29,8 +29,6 @@ namespace LinkedList
                 //The newly added node is added as the next node of the current tail node.
                 tail.next = newNode;
 
-                //To go back to the starting point: circular;
-                //newNode.next = head;
             }
 
             /*The newly added node is always a tail.
@@ -83,14 +81,27 @@ namespace LinkedList
             }                      
         }
 
+        public bool DoesNodeExist(int value)
+        {
+            Node selectedNode = head;
+            while(selectedNode.next != null)
+            {
+                if (selectedNode.next.data == value)
+                    return true;
+
+                selectedNode = selectedNode.next;
+            }
+            return false;
+        }
+
         public void PrintNodesList()
         {
             Node selectedNode = head;
-            while (selectedNode.next != null)
+            while(selectedNode.next != null)
             {
                 Console.Write($"{selectedNode.data},");
                 selectedNode = selectedNode.next;
             }
-        }
+        }       
     }
 }
